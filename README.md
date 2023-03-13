@@ -1,6 +1,6 @@
-![Google-flutter-logo](https://user-images.githubusercontent.com/59097913/224836703-cd16d1d3-b17e-42e0-af7d-688b626865bf.png)
+# Pemrograman Visual Piranti Bergerak
 
-# Pemrograman Visual Piranti Bergerak 
+![flutter](https://user-images.githubusercontent.com/59097913/224838114-68ac6765-374e-450e-8d89-ef096741a669.jpeg)
 
 ## About Repository
 - Quiz 2
