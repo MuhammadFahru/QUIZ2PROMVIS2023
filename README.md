@@ -1,4 +1,4 @@
-<p align="center">![Google-flutter-logo](https://user-images.githubusercontent.com/59097913/224836703-cd16d1d3-b17e-42e0-af7d-688b626865bf.png)</p>
+![Google-flutter-logo](https://user-images.githubusercontent.com/59097913/224836703-cd16d1d3-b17e-42e0-af7d-688b626865bf.png)
 
 # Pemrograman Visual Piranti Bergerak 
 
