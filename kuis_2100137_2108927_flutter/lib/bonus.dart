@@ -73,17 +73,9 @@ class MyAppState extends State<MyApp> {
                           setState(() {
                             if (newValue != null) {
                               if (newValue == "Active Turn Over") {
-                                if (pilihanFilterDua == "1D") {
-                                  data.items = ListData.itemsTurnOver;
-                                } else {
-                                  data.items = ListData.itemsTurnOver1W;
-                                }
+                                data.items = ListData.itemsTurnOver;
                               } else {
-                                if (pilihanFilterDua == "1D") {
-                                  data.items = ListData.itemsVolume;
-                                } else {
-                                  data.items = ListData.itemsVolume1W;
-                                }
+                                data.items = ListData.itemsVolume;
                               }
                               pilihanFilterSatu = newValue;
                             }
@@ -98,19 +90,6 @@ class MyAppState extends State<MyApp> {
                       onChanged: (String? newValue) {
                         setState(() {
                           if (newValue != null) {
-                            if (newValue == "1D") {
-                              if (pilihanFilterSatu == "Active Turn Over") {
-                                data.items = ListData.itemsTurnOver;
-                              } else {
-                                data.items = ListData.itemsVolume;
-                              }
-                            } else {
-                              if (pilihanFilterSatu == "Active Turn Over") {
-                                data.items = ListData.itemsTurnOver1W;
-                              } else {
-                                data.items = ListData.itemsVolume1W;
-                              }
-                            }
                             pilihanFilterDua = newValue;
                           }
                         });
@@ -129,7 +108,9 @@ class MyAppState extends State<MyApp> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
-                                    Container(
+                                    Expanded(
+        flex: 7,
+        child: Container(
                                         child: Column(
                                       children: [
                                         Text(
@@ -141,7 +122,7 @@ class MyAppState extends State<MyApp> {
                                         const Text("Volume"),
                                         const Text("Turn Over"),
                                       ],
-                                    )),
+                                    ))),
                                     Container(
                                         child: Column(
                                       children: [
@@ -154,6 +135,7 @@ class MyAppState extends State<MyApp> {
                                         child: Column(
                                       children: [
                                         Text(data.items[index].harga,
+                                            textAlign: TextAlign.right,
                                             style: data.items[index]
                                                         .statusSaham ==
                                                     1
@@ -165,6 +147,10 @@ class MyAppState extends State<MyApp> {
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.red)),
+                                        Text(
+                                          data.items[index].freq,
+                                          textAlign: TextAlign.right,
+                                        ),
                                       ],
                                     )),
                                     Container(
@@ -243,6 +229,16 @@ class ButtonPerjanjian extends StatelessWidget {
 class ListData {
   static final List itemsTurnOver = [
     Data(
+        kode: "GOTO",
+        nama: "GoTo Gojek Tokopedia Tbk",
+        vol: "2.3B",
+        turnOver: "283.2B",
+        harga: "122",
+        naikTurun: "-4",
+        pctNaikTurun: "-3.17%",
+        freq: "1,238",
+        statusSaham: 2),
+    Data(
         kode: "BBRI",
         nama: "Bank Rakyat Indonesia (Perseo) Tbk",
         vol: "125M",
@@ -250,16 +246,8 @@ class ListData {
         harga: "4820",
         naikTurun: "+80",
         pctNaikTurun: "+2.00%",
+        freq: "4,238",
         statusSaham: 1),
-    Data(
-        kode: "BBCA",
-        nama: "Bank Central Asia Tbk",
-        vol: "59.6M",
-        turnOver: "506B",
-        harga: "8450",
-        naikTurun: "-125",
-        pctNaikTurun: "-1.46%",
-        statusSaham: 2),
     Data(
         kode: "TLKM",
         nama: "Telkom Indonesia (Persero) Tbk",
@@ -268,16 +256,8 @@ class ListData {
         harga: "4810",
         naikTurun: "+100",
         pctNaikTurun: "+5.00%",
+        freq: "7,238",
         statusSaham: 1),
-    Data(
-        kode: "GOTO",
-        nama: "GoTo Gojek Tokopedia Tbk",
-        vol: "2.3B",
-        turnOver: "283.2B",
-        harga: "122",
-        naikTurun: "-4",
-        pctNaikTurun: "-3.17%",
-        statusSaham: 2),
     Data(
         kode: "ANTM",
         nama: "Aneka Tambang Tbk",
@@ -286,102 +266,17 @@ class ListData {
         harga: "1830",
         naikTurun: "-20",
         pctNaikTurun: "-1.08%",
+        freq: "8,238",
         statusSaham: 2),
-  ];
-
-  static final List itemsTurnOver1W = [
-    Data(
-        kode: "BBRI",
-        nama: "Bank Rakyat Indonesia (Perseo) Tbk",
-        vol: "25T",
-        turnOver: "2T",
-        harga: "4820",
-        naikTurun: "+80",
-        pctNaikTurun: "+2.00%",
-        statusSaham: 1),
     Data(
         kode: "BBCA",
         nama: "Bank Central Asia Tbk",
-        vol: "1.6T",
-        turnOver: "1.5T",
+        vol: "59.6M",
+        turnOver: "506B",
         harga: "8450",
         naikTurun: "-125",
         pctNaikTurun: "-1.46%",
-        statusSaham: 2),
-    Data(
-        kode: "TLKM",
-        nama: "Telkom Indonesia (Persero) Tbk",
-        vol: "3T",
-        turnOver: "1T",
-        harga: "4810",
-        naikTurun: "+100",
-        pctNaikTurun: "+5.00%",
-        statusSaham: 1),
-    Data(
-        kode: "GOTO",
-        nama: "GoTo Gojek Tokopedia Tbk",
-        vol: "1T",
-        turnOver: "700B",
-        harga: "122",
-        naikTurun: "-4",
-        pctNaikTurun: "-3.17%",
-        statusSaham: 2),
-    Data(
-        kode: "ANTM",
-        nama: "Aneka Tambang Tbk",
-        vol: "1T",
-        turnOver: "600B",
-        harga: "1830",
-        naikTurun: "-20",
-        pctNaikTurun: "-1.08%",
-        statusSaham: 2),
-  ];
-
-  static final List itemsVolume1W = [
-    Data(
-        kode: "BBRI",
-        nama: "Bank Rakyat Indonesia (Perseo) Tbk",
-        vol: "25T",
-        turnOver: "2T",
-        harga: "4820",
-        naikTurun: "+80",
-        pctNaikTurun: "+2.00%",
-        statusSaham: 1),
-    Data(
-        kode: "TLKM",
-        nama: "Telkom Indonesia (Persero) Tbk",
-        vol: "3T",
-        turnOver: "1T",
-        harga: "4810",
-        naikTurun: "+100",
-        pctNaikTurun: "+5.00%",
-        statusSaham: 1),
-    Data(
-        kode: "BBCA",
-        nama: "Bank Central Asia Tbk",
-        vol: "1.6T",
-        turnOver: "1.5T",
-        harga: "8450",
-        naikTurun: "-125",
-        pctNaikTurun: "-1.46%",
-        statusSaham: 2),
-    Data(
-        kode: "GOTO",
-        nama: "GoTo Gojek Tokopedia Tbk",
-        vol: "1T",
-        turnOver: "700B",
-        harga: "122",
-        naikTurun: "-4",
-        pctNaikTurun: "-3.17%",
-        statusSaham: 2),
-    Data(
-        kode: "ANTM",
-        nama: "Aneka Tambang Tbk",
-        vol: "1T",
-        turnOver: "600B",
-        harga: "1830",
-        naikTurun: "-20",
-        pctNaikTurun: "-1.08%",
+        freq: "8,238",
         statusSaham: 2),
   ];
 
@@ -394,6 +289,7 @@ class ListData {
         harga: "122",
         naikTurun: "-4",
         pctNaikTurun: "-3.17%",
+        freq: "1,238",
         statusSaham: 2),
     Data(
         kode: "BBRI",
@@ -403,6 +299,7 @@ class ListData {
         harga: "4820",
         naikTurun: "+80",
         pctNaikTurun: "+2.00%",
+        freq: "4,238",
         statusSaham: 1),
     Data(
         kode: "TLKM",
@@ -412,6 +309,7 @@ class ListData {
         harga: "4810",
         naikTurun: "+100",
         pctNaikTurun: "+5.00%",
+        freq: "7,238",
         statusSaham: 1),
     Data(
         kode: "ANTM",
@@ -421,6 +319,7 @@ class ListData {
         harga: "1830",
         naikTurun: "-20",
         pctNaikTurun: "-1.08%",
+        freq: "8,238",
         statusSaham: 2),
     Data(
         kode: "BBCA",
@@ -430,6 +329,7 @@ class ListData {
         harga: "8450",
         naikTurun: "-125",
         pctNaikTurun: "-1.46%",
+        freq: "8,238",
         statusSaham: 2),
   ];
 
@@ -451,6 +351,8 @@ class Data {
 
   String pctNaikTurun = "";
 
+  String freq = "";
+
   int statusSaham = 0; // 0 = stagnan, 1 = naik, 2 = turun
 
   Data(
@@ -461,5 +363,6 @@ class Data {
       required this.harga,
       required this.naikTurun,
       required this.pctNaikTurun,
+      required this.freq,
       required this.statusSaham});
 }
